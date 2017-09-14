@@ -47,7 +47,7 @@ public class NumbersActivity extends AppCompatActivity {
         //    wordView.setText(numbers.get(index));
             //and add the View as a chile to the rootView
         //    rootView.addView(wordView);
-        ArrayAdapter<String> itemAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, numbers);
+        ArrayAdapter<String> itemAdapter = new ArrayAdapter<String>(this, R.layout.list_item, numbers);
         ListView listView = (ListView) findViewById(R.id.list);
         listView.setAdapter(itemAdapter);
 
