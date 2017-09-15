@@ -2,33 +2,36 @@ package com.example.android.miwok;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.GridView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
 import static com.example.android.miwok.R.id.numbers;
+import static com.example.android.miwok.R.id.select_dialog_listview;
 
 public class NumbersActivity extends AppCompatActivity {
+    ArrayList<Word> numbers = new ArrayList<Word>();
+    WordAdapter<Word> itemAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_numbers);
+        setContentView(R.layout.word_list);
+        itemAdapter = new WordAdapter<Word>(this, numbers);
 
-        ArrayList<String> numbers = new ArrayList<String>();
-
-        numbers.add("one"); numbers.add("two"); numbers.add("three");
-        numbers.add("four"); numbers.add("five"); numbers.add("six");
-        numbers.add("seven"); numbers.add("eight"); numbers.add("nine");
-        numbers.add("ten");
+        ReportCard alon = new ReportCard("alon", 33, 45, 67);
+        numbers.add(new Word("one","lutti"));
+        numbers.add(new Word("two","otiiko"));
+        numbers.add(new Word("three","tolookosu"));
+        numbers.add(new Word("four","oyyisa"));
+        numbers.add(new Word("five","massokka"));
+        numbers.add(new Word("six","temmokka"));
+        numbers.add(new Word("seven","kenekaku"));
+        numbers.add(new Word("eight","kawinta"));
+        numbers.add(new Word("nine","wo'e"));
+        numbers.add(new Word("ten","na'aacha"));
+        numbers.add(new Word(alon.getName(),alon.getReport()));
         // Find the root view of the whole layout
         //LinearLayout rootView = (LinearLayout)findViewById(R.id.rootNumbers);
         //Example of a While loop
@@ -47,9 +50,15 @@ public class NumbersActivity extends AppCompatActivity {
         //    wordView.setText(numbers.get(index));
             //and add the View as a chile to the rootView
         //    rootView.addView(wordView);
-        ArrayAdapter<String> itemAdapter = new ArrayAdapter<String>(this, R.layout.list_item, numbers);
         ListView listView = (ListView) findViewById(R.id.list);
         listView.setAdapter(itemAdapter);
 
+
     }
+
+    public void addNum(View view){
+        numbers.add(new Word("123","lutt444i"));
+        itemAdapter.notifyDataSetChanged();
+    }
+
 }
