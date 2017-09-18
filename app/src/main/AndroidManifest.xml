@@ -31,7 +31,8 @@
         </activity>
 
         <activity android:name=".NumbersActivity"
-            android:label="@string/category_numbers" />
+            android:label="@string/category_numbers"
+            />
 
         <activity android:name=".FamilyActivity"
             android:label="@string/category_family"/>
